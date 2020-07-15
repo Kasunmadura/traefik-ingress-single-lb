@@ -1,0 +1,54 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hare-ingress
+  namespace: hare
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: hare.playpen.fsniwaikato.kiwi
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hare
+          servicePort: http
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bear-ingress
+  namespace: bear
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: bear.playpen.fsniwaikato.kiwi
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: bear
+          servicePort: http
+
+--- 
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: moose-ingress
+  namespace: moose
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:  
+  rules:
+  - host: moose.playpen.fsniwaikato.kiwi
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: moose
+          servicePort: http
+
+
